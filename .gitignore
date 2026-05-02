@@ -1,0 +1,25 @@
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build
+/app
+
+# IDEs
+.vscode/
+.idea/
+
+# Docker
+**/Dockerfile*
+**/docker-compose*.yml
+
+# Logs
+*.log
+
+# OS
+.DS_Store
