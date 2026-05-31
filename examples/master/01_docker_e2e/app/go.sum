@@ -1,0 +1,4 @@
+github.com/go-sql-driver/mysql v1.8.1 h1:JW9LrwbkWACsRRYxTliQKr9ZxjMXQ6psOGZEP3T2M3w=
+github.com/go-sql-driver/mysql v1.8.1/go.mod h1:qn46aNg1333BRMNU69Lq93t8du/dwxI64Gl8i5p1WMU=
+filippo.io/edwards25519 v1.1.0 h1:FNf4tywRCM0yTtR+rJdveupFTG/5xZgeOPPS3dLioA8=
+filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4s1nneMGT+hmxMjDy3Xm0XYpM=

@@ -1,0 +1,37 @@
+{{define "page"}}
+<!doctype html>
+<html lang="ja">
+{{template "head" .}}
+<body>
+  <div class="page-shell">
+    {{template "site_header" .}}
+    <main>
+      {{$page := .Page}}
+      <section class="page-hero">
+        <p class="eyebrow">PAGE</p>
+        <h1>{{$page.Title}}</h1>
+        <p class="hero-copy">{{$page.Lead}}</p>
+      </section>
+
+      <section class="content-stack">
+        {{range $page.Sections}}
+        <article class="detail-block">
+          <h2>{{.Title}}</h2>
+          <p>{{.Content}}</p>
+        </article>
+        {{end}}
+
+        {{if $page.CTAs}}
+        <div class="inline-links">
+          {{range $page.CTAs}}
+          <a class="button button-secondary" href="{{.URL}}" {{if .External}}target="_blank" rel="noreferrer"{{end}}>{{.Label}}</a>
+          {{end}}
+        </div>
+        {{end}}
+      </section>
+    </main>
+    {{template "site_footer" .}}
+  </div>
+</body>
+</html>
+{{end}}

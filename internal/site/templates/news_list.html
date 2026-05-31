@@ -1,0 +1,31 @@
+{{define "news_list"}}
+<!doctype html>
+<html lang="ja">
+{{template "head" .}}
+<body>
+  <div class="page-shell">
+    {{template "site_header" .}}
+    <main>
+      {{$page := .Page}}
+      <section class="page-hero">
+        <p class="eyebrow">NEWS</p>
+        <h1>{{$page.Title}}</h1>
+        <p class="hero-copy">{{$page.Lead}}</p>
+      </section>
+
+      <section class="card-grid">
+        {{range $page.Items}}
+        <article class="card">
+          <p class="meta">{{.Date}} / {{.Category}}</p>
+          <h2>{{.Title}}</h2>
+          <p>{{.Summary}}</p>
+          <a href="/news/detail/{{.ID}}">詳細を見る</a>
+        </article>
+        {{end}}
+      </section>
+    </main>
+    {{template "site_footer" .}}
+  </div>
+</body>
+</html>
+{{end}}

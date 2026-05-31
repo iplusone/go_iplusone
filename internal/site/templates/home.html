@@ -1,0 +1,79 @@
+{{define "home"}}
+<!doctype html>
+<html lang="ja">
+{{template "head" .}}
+<body>
+  {{$page := .Page}}
+  <div class="page-shell">
+    <main>
+      {{template "site_header" .}}
+
+      <section id="gospec-curriculum" class="py-4 bg-light">
+        <div class="container py-3">
+          <div class="curriculum-hero rounded-5 p-4 p-lg-5 mb-4">
+            <div class="row g-4 align-items-center">
+              <div class="col-lg-7">
+                <span class="curriculum-badge">Go Learning</span>
+                <h1 class="fw-bold display-5 mt-3 mb-3">{{$page.Hero.Title}}</h1>
+                <p class="curriculum-lead mb-3">{{$page.Hero.Content}}</p>
+                <h2 class="fw-bold h1 mb-3">{{$page.LearningIntro.Title}}</h2>
+                <p class="curriculum-lead mb-0">{{$page.LearningIntro.Content}}</p>
+              </div>
+              <div class="col-lg-5">
+                <div class="curriculum-note">
+                  <div class="curriculum-note-title">学び方の軸</div>
+                  <ul class="mb-0">
+                    <li>章を読む前に、何を理解したいかを決める</li>
+                    <li>読んだら最小コードで OK / NG を試す</li>
+                    <li>仕様の言い回しを、自分の言葉に言い換える</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            {{range $page.Chapters}}
+            <div class="col-lg-6">
+              <article class="curriculum-card h-100">
+                <div class="curriculum-card-header">
+                  <span class="curriculum-step">{{.Number}}</span>
+                  <h3 class="curriculum-title">{{.Title}}</h3>
+                </div>
+                <p class="curriculum-summary">{{.Summary}}</p>
+                <div class="curriculum-goal-box">
+                  <div class="curriculum-block-label">到達目標</div>
+                  <p class="mb-0">{{.Goal}}</p>
+                </div>
+                <div class="curriculum-block">
+                  <div class="curriculum-block-label">重要用語</div>
+                  <div class="curriculum-chip-row">
+                    {{range .KeyTerms}}
+                    <span class="curriculum-chip curriculum-chip-dark">{{.}}</span>
+                    {{end}}
+                  </div>
+                </div>
+                <div class="curriculum-block">
+                  <div class="curriculum-block-label">試すこと</div>
+                  <ul class="curriculum-list curriculum-list-compact mb-0">
+                    {{range .Practice}}
+                    <li>{{.}}</li>
+                    {{end}}
+                  </ul>
+                </div>
+                <div class="curriculum-actions">
+                  <a class="btn btn-primary fw-bold" href="/gospec/{{.Slug}}">この章を読む</a>
+                </div>
+              </article>
+            </div>
+            {{end}}
+          </div>
+        </div>
+      </section>
+
+    </main>
+    {{template "site_footer" .}}
+  </div>
+</body>
+</html>
+{{end}}

@@ -1,0 +1,27 @@
+{{define "song_detail"}}
+<!doctype html>
+<html lang="ja">
+{{template "head" .}}
+<body>
+  <div class="page-shell">
+    {{template "site_header" .}}
+    <main>
+      {{$page := .Page}}
+      <article class="detail-page">
+        <p class="eyebrow">{{$page.Theme}}</p>
+        <h1>{{$page.Title}}</h1>
+        <p class="meta">{{$page.Mood}}</p>
+        <p class="hero-copy">{{$page.Summary}}</p>
+        <div class="content-stack">
+          {{range $page.Lyrics}}
+          <p>{{.}}</p>
+          {{end}}
+        </div>
+        <p><a class="text-link" href="/suno-songs">SUNO Songs 一覧へ戻る</a></p>
+      </article>
+    </main>
+    {{template "site_footer" .}}
+  </div>
+</body>
+</html>
+{{end}}

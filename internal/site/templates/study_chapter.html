@@ -1,0 +1,61 @@
+{{define "study_chapter"}}
+<!doctype html>
+<html lang="ja">
+{{template "head" .}}
+<body>
+  <div class="page-shell chapter-page">
+    {{template "site_header" .}}
+    <main>
+      {{$page := .Page}}
+      <section class="page-hero study-hero chapter-hero">
+        <p class="eyebrow">GoSpec Learning</p>
+        <div class="study-hero-step">{{$page.Number}}</div>
+        <h1>{{$page.Title}}</h1>
+        <p class="hero-copy">{{$page.Summary}}</p>
+      </section>
+
+      <section class="content-stack chapter-content">
+        <article class="detail-block chapter-block chapter-goal">
+          <h2>この章の到達目標</h2>
+          <p>{{$page.Goal}}</p>
+        </article>
+
+        <article class="detail-block chapter-block">
+          <h2>重要用語</h2>
+          <div class="curriculum-chip-row">
+            {{range $page.KeyTerms}}
+            <span class="curriculum-chip curriculum-chip-dark">{{.}}</span>
+            {{end}}
+          </div>
+        </article>
+
+        {{range $page.Sections}}
+        <article class="detail-block chapter-block">
+          <h2>{{.Title}}</h2>
+          <p>{{.Content}}</p>
+        </article>
+        {{end}}
+
+        <article class="detail-block chapter-block">
+          <h2>この章で試すこと</h2>
+          <ul class="curriculum-list mb-0">
+            {{range $page.Practice}}
+            <li>{{.}}</li>
+            {{end}}
+          </ul>
+        </article>
+
+        {{if $page.CTAs}}
+        <div class="inline-links study-links chapter-links">
+          {{range $page.CTAs}}
+          <a class="button button-secondary" href="{{.URL}}" {{if .External}}target="_blank" rel="noreferrer"{{end}}>{{.Label}}</a>
+          {{end}}
+        </div>
+        {{end}}
+      </section>
+    </main>
+    {{template "site_footer" .}}
+  </div>
+</body>
+</html>
+{{end}}

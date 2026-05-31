@@ -1,0 +1,187 @@
+/* ============================================================
+   💪 トップページナビバー（ロゴ左・メニュー右／横並び固定）
+   ============================================================ */
+
+/* ナビバー本体 */
+.navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100%;
+  background-color: rgba(8, 70, 227, 0.98) !important;
+  color: #fff !important;
+  z-index: 99999 !important;
+  padding: 0.5rem 1rem !important;
+  border: none !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important; /* ← ロゴ左・メニュー右 */
+  height: 60px !important;
+}
+
+/* container が邪魔して崩れるのを防ぐ */
+.navbar > .container,
+.navbar > .container-fluid {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  width: 100%;
+  height: 60px !important;
+}
+
+/* ロゴ */
+.navbar-brand img {
+  height: 32px !important;
+  margin-right: 8px;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: #fff !important;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* メニュー（常に右寄せ横並び） */
+.navbar-collapse {
+  display: flex !important;
+  flex-basis: auto !important;
+  flex-grow: 1 !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  height: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.navbar-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  list-style: none;
+  margin-left: 1rem;
+}
+
+.navbar .nav-link {
+  color: #ffffff !important;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+.navbar .nav-link:hover {
+  color: #ffe600 !important;
+}
+
+/* ハンバーガー削除 */
+.navbar-toggler {
+  display: none !important;
+}
+
+/* ドロップダウン */
+.dropdown-menu {
+  background-color: rgba(8, 70, 227, 0.95) !important;
+  border: none !important;
+  border-radius: 0;
+}
+.dropdown-item {
+  color: #fff !important;
+}
+.dropdown-item:hover {
+  background-color: #0a5aff !important;
+}
+
+/* スマホ調整（幅狭でも横並び維持） */
+@media (max-width: 767.98px) {
+  .navbar {
+    padding: 0.25rem 0.75rem !important;
+    height: 56px !important;
+  }
+
+  .navbar-brand img {
+    height: 28px !important;
+  }
+
+  .navbar-nav {
+    flex-wrap: nowrap !important; /* 折り返さない */
+  }
+
+  .navbar .nav-link {
+    font-size: 0.85rem !important;
+    margin-left: 0.75rem;
+  }
+
+  /* メニューが右端からはみ出るのを防ぐ */
+  .navbar-collapse {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+  }
+}
+
+
+
+/* =========================================
+   スマホでMAIN MENUクリック時のズレ修正
+   ========================================= */
+
+/* ドロップダウン表示時でも色を固定（黄色禁止） */
+.navbar .nav-link.dropdown-toggle.show,
+.navbar .nav-link:focus,
+.navbar .nav-link:active {
+  color: #ffffff !important;
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 開いたときに高さが変わらないよう強制 */
+.nav-item.dropdown.show {
+  position: relative !important;
+}
+
+.navbar .nav-link {
+  line-height: 1.5 !important;
+  padding-top: 0.4rem !important;
+  padding-bottom: 0.4rem !important;
+}
+
+/* ドロップダウンメニューの表示位置を安定化 */
+.dropdown-menu.show {
+  display: block !important;
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  margin-top: 0 !important;
+  background-color: rgba(8, 70, 227, 0.95) !important;
+  border: none !important;
+  border-radius: 0 0 4px 4px !important;
+  min-width: 200px !important;
+}
+
+/* スマホでは開閉時にレイアウト崩れないように */
+@media (max-width: 767.98px) {
+  .dropdown-menu.show {
+    position: fixed !important;
+    top: 56px !important; /* ナビ高さ分下に配置 */
+    right: 0 !important;
+    left: auto !important;
+    width: auto !important;
+    background-color: rgba(8, 70, 227, 0.98) !important;
+    border-radius: 0 0 0 8px;
+  }
+
+  .dropdown-item {
+    padding: 0.5rem 1rem !important;
+    text-align: right;
+  }
+}

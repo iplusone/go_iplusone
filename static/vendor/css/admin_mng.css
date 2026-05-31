@@ -1,0 +1,334 @@
+body {
+    font-family: "Meiryo", "Hiragino Kaku Gothic ProN", "Segoe UI", "Helvetica Neue", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #000;
+    /* 黒でくっきり */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+table {
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e6f4ff;
+    /* ←うすい水色 */
+}
+
+thead tr:hover {
+    background-color: inherit !important;
+}
+
+/* ボタンのスタイル */
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #3498db;
+    /* 落ち着いたブルー */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    /* 少し濃いブルー */
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+
+.admin_container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 20px;
+    /* 両端に少し余白 */
+}
+
+.task_form {
+    max-width: 1800px !important;
+    width: 100%;
+    margin: 30px auto;
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+form {
+    max-width: 800px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+input.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    /* 表示させる */
+    width: 20px;
+    /* チェックボックスの幅 */
+    height: 20px;
+    /* チェックボックスの高さ */
+    accent-color: #007bff;
+    /* チェック時の色（対応ブラウザのみ） */
+    margin-right: 8px;
+    /* チェックボックスとラベル間のスペース */
+    cursor: pointer;
+    /* カーソルをポインターに変更 */
+}
+
+.admin_container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+    .admin_container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 14px;
+        /* モバイル用にフォントサイズ調整 */
+        padding: 8px;
+    }
+
+    .btn {
+        width: 100%;
+        /* モバイルではボタンを幅いっぱいに */
+    }
+}
+
+.toast {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #d9534f;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav.col-md-3 {
+    /* width: 200px !important; */
+    /* min-width: 200px;
+                                                                                                            max-width: 200px; */
+    background-color: #212529;
+    color: white;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.table-container {
+    width: 100%;
+    /* max-height: 600px; */
+    overflow-x: auto;
+    overflow-y: auto;
+    position: relative;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    /* ← ここをautoからfixedに変更 */
+    border-collapse: collapse;
+    font-size: 1.0rem;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #212529;
+    color: white;
+    font-size: 1.0rem;
+    z-index: 2;
+}
+
+th {
+    text-align: center;
+    font-size: 1.0rem;
+    white-space: nowrap;
+    padding: 6px;
+    border: 1px solid #ddd;
+}
+
+td {
+    text-align: left;
+    font-size: 1.0rem;
+    white-space: nowrap;
+    padding: 6px;
+    border: 1px solid #ddd;
+}
+
+th.col-id,
+td.col-id {
+    width: 60px;
+}
+
+th.col-code,
+td.col-code {
+    width: 100px;
+}
+
+th.col-name,
+td.col-name {
+    width: 250px;
+}
+
+th.col-industry,
+td.col-industry {
+    width: 120px;
+}
+
+th.col-address,
+td.col-address {
+    width: 250px;
+    word-break: break-word;
+    /* 単語途中でも折り返しOK */
+    white-space: normal;
+    /* 折り返しを許可（←これが重要） */
+}
+
+th.col-actions,
+td.col-actions {
+    width: 240px;
+}
+
+.col-name,
+.col-industry,
+.col-address {
+    white-space: normal;
+    word-break: break-word;
+}
+
+td.col-id {
+    text-align: center;
+}
+
+.resize-handle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+}
+
+input.form-control,
+input[type="date"],
+input[type="time"] {
+    height: 2.8em;
+    font-size: 1.2em;
+    padding: 0.5em 0.75em;
+}
+
+textarea.form-control {
+    height: 28em;
+    font-size: 1.2em;
+    padding: 0.5em 0.75em;
+}
+
+@media (max-width: 768px) {
+
+    .navbar-nav {
+        display: none;
+    }
+
+    .mb-3.d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-label-fixed {
+        margin-left: 0;
+        text-align: left;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        max-width: 100% !important;
+    }
+
+    .select2-container,
+    .select2-container--default .select2-selection--single,
+    .select2-dropdown {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+    }
+}
+
+#image-preview img {
+    object-fit: cover;
+    max-width: 120px;
+    max-height: 100px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    border-radius: 6px;
+}

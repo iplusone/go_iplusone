@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Docker E2E Week 1</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f6f4ef;
+        --panel: #fffdf8;
+        --ink: #1e2a36;
+        --muted: #68707a;
+        --accent: #0b7285;
+        --border: #d9d3c7;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+        background: linear-gradient(180deg, #f7f2e8 0%, #eef4f6 100%);
+        color: var(--ink);
+      }
+
+      main {
+        max-width: 720px;
+        margin: 48px auto;
+        padding: 0 20px;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 18px 50px rgba(36, 42, 48, 0.08);
+      }
+
+      h1 {
+        margin-top: 0;
+        font-size: 2rem;
+      }
+
+      p {
+        line-height: 1.8;
+      }
+
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 14px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        color: white;
+        background: var(--accent);
+      }
+
+      pre {
+        white-space: pre-wrap;
+        padding: 16px;
+        border-radius: 12px;
+        background: #f0f5f7;
+        border: 1px solid #d4e2e7;
+        min-height: 48px;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="panel">
+        <h1>Week 1 Docker E2E</h1>
+        <p>
+          この画面は <strong>front</strong> コンテナから配信されています。ボタンを押すと、
+          JavaScript が <strong>app</strong> コンテナの API を呼び、その API が
+          <strong>db</strong> コンテナからデータを取得して返します。
+        </p>
+        <button id="load">Load message from DB</button>
+        <p class="muted">API: <code>http://localhost:18081/api/message</code></p>
+        <pre id="result">まだデータを取得していません。</pre>
+      </section>
+    </main>
+    <script>
+      const button = document.getElementById("load");
+      const result = document.getElementById("result");
+
+      button.addEventListener("click", async () => {
+        result.textContent = "取得中...";
+        try {
+          const res = await fetch("http://localhost:18081/api/message");
+          if (!res.ok) {
+            throw new Error(`HTTP ${res.status}`);
+          }
+          const data = await res.json();
+          result.textContent = `id: ${data.id}\ntitle: ${data.title}\nmessage: ${data.message}`;
+        } catch (err) {
+          result.textContent = `取得失敗: ${err.message}`;
+        }
+      });
+    </script>
+  </body>
+</html>
