@@ -1,0 +1,74 @@
+<article data-note-ready="true">
+<h1>05 Short Variable Declaration: `:=` を使うとGoらしい書き味になる</h1>
+<p>Go のコードを見ていると、かなり早い段階で <code>:=</code> が何度も出てきます。最初は少し記号っぽく見えますが、慣れると「Goらしさ」が一番よく出る書き方のひとつです。</p>
+<p>このハンズオンは、Go でかなり頻繁に使う <code>:=</code> の感覚をつかむ回です。Go を読んでいると本当にたくさん出てくるので、早めに慣れておくとその後が楽になります。</p>
+<p>前半では <code>name := &quot;Go&quot;</code> のように、値から型が決まる宣言をまとめて見せています。ここで大事なのは、「型を書いていない」のではなく、「コンパイラが値から型を決めている」ということです。</p>
+<p>次の再代入パートでは、一度 <code>:=</code> で作った変数にも普通の <code>=</code> で新しい値を入れられることを確認しています。<code>:=</code> は宣言であって、更新ではない。この区別を早めに持てると混乱しにくいです。</p>
+<p>複数同時宣言も Go ではよく出てきます。戻り値を2つ受けるときなどにも自然につながるので、この時点で見ておく意味があります。</p>
+<p>この回では、「短く書くこと」が目的ではなく、「Go では値から型が自然に決まる場面が多い」と理解できれば十分です。</p>
+<h2 data-note-heading="section">実行コード</h2>
+<pre data-note-code="true"><code data-lang="go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	fmt.Println(&quot;== 暗黙的型宣言 ==&quot;)
+
+	name := &quot;Go&quot;
+	age := 20
+	height := 168.5
+	isLearning := true
+
+	fmt.Printf(&quot;name = %q (%T)\n&quot;, name, name)
+	fmt.Printf(&quot;age = %d (%T)\n&quot;, age, age)
+	fmt.Printf(&quot;height = %.1f (%T)\n&quot;, height, height)
+	fmt.Printf(&quot;isLearning = %v (%T)\n&quot;, isLearning, isLearning)
+
+	fmt.Println()
+	fmt.Println(&quot;== 値から型が決まる ==&quot;)
+
+	count := 10
+	price := 980.0
+	message := &quot;こんにちは&quot;
+
+	fmt.Printf(&quot;count = %v (%T)\n&quot;, count, count)
+	fmt.Printf(&quot;price = %v (%T)\n&quot;, price, price)
+	fmt.Printf(&quot;message = %v (%T)\n&quot;, message, message)
+
+	fmt.Println()
+	fmt.Println(&quot;== 再代入 ==&quot;)
+
+	score := 80
+	fmt.Printf(&quot;更新前 score = %d (%T)\n&quot;, score, score)
+
+	score = 95
+	fmt.Printf(&quot;更新後 score = %d (%T)\n&quot;, score, score)
+
+	fmt.Println()
+	fmt.Println(&quot;== 複数の暗黙的型宣言 ==&quot;)
+
+	firstName, lastName := &quot;Shinichi&quot;, &quot;Ishii&quot;
+	x, y := 10, 20
+
+	fmt.Printf(&quot;firstName = %q (%T)\n&quot;, firstName, firstName)
+	fmt.Printf(&quot;lastName = %q (%T)\n&quot;, lastName, lastName)
+	fmt.Printf(&quot;x = %d (%T), y = %d (%T)\n&quot;, x, x, y, y)
+}
+</code></pre>
+<h2 data-note-heading="section">実行方法</h2>
+<pre data-note-code="true"><code data-lang="bash">go run ./examples/handson/05_short_variable_declaration
+</code></pre>
+<h2 data-note-heading="section">実行結果の見どころ</h2>
+<ul>
+<li>文字列、整数、小数、真偽値それぞれで、型が自動的に決まっているところ</li>
+<li><code>score</code> を再代入しても型は変わらないところ</li>
+<li>複数同時宣言でも、各変数にちゃんと型がついているところ</li>
+</ul>
+<h2 data-note-heading="section">試してほしい変更</h2>
+<ul>
+<li><code>age := 20</code> を <code>age := 20.0</code> に変えて型の違いを見る</li>
+<li><code>score = &quot;95&quot;</code> のような再代入を試してコンパイル結果を確認する</li>
+<li>複数同時宣言の値を入れ替えて、型推論がどう変わるか見る</li>
+</ul>
+
+</article>

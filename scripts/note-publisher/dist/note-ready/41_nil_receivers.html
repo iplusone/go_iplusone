@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>41 Nil Receivers: `nil` でもメソッド呼び出し自体は書ける</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>41 Nil Receivers: `nil` でもメソッド呼び出し自体は書ける</h1>
+<p>このハンズオンは、Go の少し意外な性質を扱います。ポインタレシーバのメソッドは、対象が <code>nil</code> でも呼び出しの形自体は書けます。</p>
+<p>もちろん安全に使うには、メソッド内で <code>nil</code> チェックが必要です。そこをしないと、実体に触れた瞬間に落ちます。</p>
+<p>この性質を知っておくと、後で <code>nil</code> を含む設計を読むときに混乱しにくくなります。「呼べる」と「安全に処理できる」は別だと分かるからです。</p>
+<p>この回は頻出ではありませんが、Go のポインタとメソッドの関係を少し深く理解するのに役立ちます。</p>
+
+</article>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<article data-note-ready="true">
+<h1>01 Values and Types: Goの最初のコードで「値には型がある」をつかむ</h1>
+<p>Go を触り始めたとき、最初はどうしても文法の形ばかり見てしまいがちです。<code>var</code> があって、文字列があって、数値があって、くらいの理解でも前には進めます。</p>
+<p>でも、Go をちゃんと読みやすく感じられるようになる最初のポイントは、<code>値には必ず型がある</code> と実感することだと思っています。</p>
+<p>このハンズオンは、Go を始めたときに最初に押さえたい <code>値</code> と <code>型</code> の感覚を確認する回です。コード自体はとても小さいですが、ここで見ていることはずっと後まで効きます。</p>
+<p>実行すると、<code>appName</code> や <code>message</code> のような値が、値そのものと一緒に <code>%T</code> で型も表示されます。ここでまず見たいのは、「Go では値に必ず型がついている」という事実です。文字列なら <code>string</code>、整数なら <code>int</code>、真偽値なら <code>bool</code> というように、値の種類がはっきり分かれています。</p>
+<p>後半では <code>int</code> <code>uint</code> <code>uintptr</code> <code>float64</code> <code>complex128</code> <code>bool</code> <code>string</code> を順番に出しています。ここは暗記よりも、「Go はかなり早い段階で型を意識させる言語なんだな」と感じることが大事です。</p>
+<p>最後の <code>ちょっと試す</code> では、数値型ごとの計算や文字列連結をまとめて見せています。型が違ってもそれぞれ自然な演算がある、という入口として読むと分かりやすいです。</p>
+<p>この回では、値と型を眺めることに集中してください。まずは <code>%v</code> と <code>%T</code> をセットで出すだけでも、Go の見え方がかなり変わります。</p>
+<h2 data-note-heading="section">実行コード</h2>
+<pre data-note-code="true"><code data-lang="go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	fmt.Println(&quot;== 値と変数 ==&quot;)
+
+	const appName = &quot;Go Hands-on&quot;
+	message := &quot;Goでは値に型がある&quot;
+
+	var age int = 20
+	score := 88
+
+	fmt.Printf(&quot;定数 appName: %v (%T)\n&quot;, appName, appName)
+	fmt.Printf(&quot;変数 message: %v (%T)\n&quot;, message, message)
+	fmt.Printf(&quot;変数 age: %v (%T)\n&quot;, age, age)
+	fmt.Printf(&quot;変数 score: %v (%T)\n&quot;, score, score)
+
+	fmt.Println()
+	fmt.Println(&quot;== 基本データ型 ==&quot;)
+
+	var integer int = -42
+	var unsignedInteger uint = 42
+	var pointerNumber uintptr = 0
+	var realNumber float64 = 3.14
+	var complexNumber complex128 = 2 + 3i
+	var isGoFun bool = true
+	var text string = &quot;Goはシンプルで読みやすい&quot;
+
+	fmt.Printf(&quot;整数 int: %v (%T)\n&quot;, integer, integer)
+	fmt.Printf(&quot;符号なし整数 uint: %v (%T)\n&quot;, unsignedInteger, unsignedInteger)
+	fmt.Printf(&quot;uintptr: %v (%T)\n&quot;, pointerNumber, pointerNumber)
+	fmt.Printf(&quot;実数 float64: %v (%T)\n&quot;, realNumber, realNumber)
+	fmt.Printf(&quot;複素数 complex128: %v (%T)\n&quot;, complexNumber, complexNumber)
+	fmt.Printf(&quot;真偽値 bool: %v (%T)\n&quot;, isGoFun, isGoFun)
+	fmt.Printf(&quot;文字列 string: %v (%T)\n&quot;, text, text)
+
+	fmt.Println()
+	fmt.Println(&quot;== ちょっと試す ==&quot;)
+	fmt.Printf(&quot;integer + 10 = %d\n&quot;, integer+10)
+	fmt.Printf(&quot;unsignedInteger * 2 = %d\n&quot;, unsignedInteger*2)
+	fmt.Printf(&quot;realNumber / 2 = %.2f\n&quot;, realNumber/2)
+	fmt.Printf(&quot;complexNumber * 2 = %v\n&quot;, complexNumber*2)
+	fmt.Printf(&quot;!isGoFun = %v\n&quot;, !isGoFun)
+	fmt.Printf(&quot;text + \&quot;!\&quot; = %s\n&quot;, text+&quot;!&quot;)
+}
+</code></pre>
+<h2 data-note-heading="section">実行方法</h2>
+<pre data-note-code="true"><code data-lang="bash">go run ./examples/handson/01_values_and_types
+</code></pre>
+<h2 data-note-heading="section">実行結果の見どころ</h2>
+<ul>
+<li><code>Go Hands-on (string)</code> のように、値と型がセットで表示されるところ</li>
+<li><code>20 (int)</code> と <code>88 (int)</code> のように、同じ整数でも「変数として名前がついた値」として眺められるところ</li>
+<li><code>complex128</code> や <code>uintptr</code> のように、普段あまり触れない型も最初から並んでいるところ</li>
+<li>最後の <code>text + &quot;!&quot;</code> で、文字列も演算の対象になると分かるところ</li>
+</ul>
+<h2 data-note-heading="section">試してほしい変更</h2>
+<ul>
+<li><code>age</code> を <code>20</code> から <code>20.5</code> に変えようとしてみて、何が起きるか確かめる</li>
+<li><code>realNumber</code> を <code>3.14</code> から <code>3</code> に変えて、型表示がどうなるか見る</li>
+<li><code>%T</code> を消して <code>%v</code> だけにすると、どれくらい情報が減るか比べる</li>
+</ul>
+
+</article>

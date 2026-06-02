@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Goハンズオンを始める前に: 最初に用意しておきたい環境をまとめて整える</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>Goハンズオンを始める前に: 最初に用意しておきたい環境をまとめて整える</h1>
+<p>このシリーズを始める前に、先にひとつだけやっておいたほうがいいことがあります。</p>
+<p>それは、<strong>Go のコードを実際に動かせる環境を整えること</strong>です。</p>
+<p>当たり前に見えるかもしれませんが、ここを飛ばしたまま個別ハンズオンへ入ると、途中でかなり高い確率で止まります。記事を読んで内容は分かっても、手元で動かせないと理解が浅くなりやすいですし、「自分の環境だけ動かない」というところで学習の勢いが削られやすいからです。</p>
+<p>このシリーズでは、Go の文法を1本ずつ小さく確認していく <code>examples/handson</code> と、その後に Docker・Web・DB・運用までつなぐ <code>examples/master</code> を用意しています。</p>
+<p>ただ、最初から全部の環境を完璧にそろえる必要はありません。</p>
+<p>まず必要なのは次の4つです。</p>
+<ul>
+<li>Go が実行できること</li>
+<li>エディタでコードが開けること</li>
+<li>ターミナルでコマンドが打てること</li>
+<li>Git でこのリポジトリを取得できること</li>
+</ul>
+<p>さらに、このシリーズを最後まで進めるなら、途中で Docker も必要になります。<br>
+なのでこの記事では、<strong>Go / エディタ / Git / Docker / リポジトリ取得 / 最初の動作確認</strong> までを一気にまとめます。</p>
+<h2 data-note-heading="section">この記事のゴール</h2>
+<p>この記事を読み終える時点で、次の状態になっていればOKです。</p>
+<ul>
+<li><code>go version</code> が通る</li>
+<li>このリポジトリを手元に置けている</li>
+<li><code>go run ./examples/handson/01_values_and_types</code> が実行できる</li>
+<li>Docker を後で使う前提が分かっている</li>
+</ul>
+<p>ここまで行けば、次の記事から安心して handson を進められます。</p>
+<h2 data-note-heading="section">1. まずGoをインストールする</h2>
+<p>最初に必要なのは Go 本体です。</p>
+<p>公式サイト:</p>
+<p><a href="https://go.dev/dl/">https://go.dev/dl/</a></p>
+<p>Windows でも macOS でも、基本は公式インストーラを使うのが一番分かりやすいです。特別な理由がなければ、最新の安定版を入れて問題ありません。</p>
+<p>インストールできたら、ターミナルで次を実行します。</p>
+<pre data-note-code="true"><code data-lang="bash">go version
+</code></pre>
+<p>うまく入っていれば、たとえば次のような表示になります。</p>
+<pre data-note-code="true"><code data-lang="bash">go version go1.xx.x windows/amd64
+</code></pre>
+<p>あるいは</p>
+<pre data-note-code="true"><code data-lang="bash">go version go1.xx.x darwin/arm64
+</code></pre>
+<p>ここで大事なのは、<strong>バージョン番号そのものより、<code>go version</code> が通ること</strong>です。</p>
+<p>もしコマンドが見つからないと言われたら、Go のインストールはできていても PATH が通っていない可能性があります。その場合はいったんインストーラの案内や公式ドキュメントを見直してください。</p>
+<h2 data-note-heading="section">2. エディタを用意する</h2>
+<p>次に、コードを開くエディタを用意します。</p>
+<p>このシリーズを進めるなら、まずは VS Code で十分です。むしろ、最初はそれが一番やりやすいと思います。</p>
+<p>VS Code:</p>
+<p><a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
+<p>入れたら、拡張機能で Go の公式拡張を追加しておくのがおすすめです。</p>
+<ul>
+<li><code>Go</code>
+<ul>
+<li>公開元: Go Team at Google</li>
+</ul>
+</li>
+</ul>
+<p>これを入れておくと、</p>
+<ul>
+<li>シンタックスハイライト</li>
+<li>フォーマット</li>
+<li>補完</li>
+<li>エラー表示</li>
+</ul>
+<p>などがかなりやりやすくなります。</p>
+<p>ただ、最初の段階では高機能な設定を全部やる必要はありません。<br>
+<strong>コードが開けて、保存できて、ターミナルが使えれば十分</strong>です。</p>
+<h2 data-note-heading="section">3. ターミナルに慣れる</h2>
+<p>このシリーズでは、記事を読むだけでなく、ターミナルで <code>go run</code> や <code>go test</code> を打ちながら進めます。</p>
+<p>Windows なら PowerShell、macOS ならターミナル.app か iTerm2 などで大丈夫です。</p>
+<p>最初に最低限使えればよいのは、次の3つだけです。</p>
+<pre data-note-code="true"><code data-lang="bash">pwd
+ls
+cd
+</code></pre>
+<p>Windows の PowerShell なら <code>pwd</code> や <code>cd</code> はそのまま使えます。<code>ls</code> もだいたい通ります。</p>
+<p>ここでは、ターミナル操作を完璧に覚える必要はありません。<br>
+<strong>「このリポジトリの場所へ移動して、コマンドを実行する」</strong> ことができれば十分です。</p>
+<h2 data-note-heading="section">4. Git を入れて、このリポジトリを取得する</h2>
+<p>次に、ハンズオンの元になるリポジトリを手元へ持ってきます。</p>
+<p>まだ Git を入れていない場合は、先にインストールしておきます。</p>
+<p>Git:</p>
+<p><a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a></p>
+<p>インストール確認:</p>
+<pre data-note-code="true"><code data-lang="bash">git --version
+</code></pre>
+<p>そのあと、このリポジトリを clone します。</p>
+<pre data-note-code="true"><code data-lang="bash">git clone &lt;このリポジトリのURL&gt;
+cd go_iplusone
+</code></pre>
+<p>もし ZIP ダウンロードで持ってくる場合でも進められますが、今後の更新を取り込みやすいので、できれば <code>git clone</code> をおすすめします。</p>
+<p>このシリーズでは、ディレクトリの中に <code>examples/handson</code> や <code>examples/master</code> がある状態になっていればOKです。</p>
+<h2 data-note-heading="section">5. Docker は今すぐ必須ではないけれど、後で必要になる</h2>
+<p>ここは少し大事な話です。</p>
+<p><code>examples/handson</code> の前半は、Go 単体で動かせます。<br>
+つまり、<strong>最初の基礎文法編を始めるだけなら Docker はまだ必須ではありません。</strong></p>
+<p>ただし、このシリーズ全体としては Docker をかなり重視しています。</p>
+<p>理由は、後半で次のようなことをやるからです。</p>
+<ul>
+<li>Go アプリをコンテナで動かす</li>
+<li>DB を別コンテナで立てる</li>
+<li>フロント、アプリ、DB を分ける</li>
+<li>Linux 基準で環境差を減らす</li>
+</ul>
+<p>なので、今すぐ使わないとしても、いずれ Docker は必要になります。</p>
+<p>先に入れておきたい場合は、ここで入れてしまって大丈夫です。</p>
+<p>Docker Desktop:</p>
+<p><a href="https://www.docker.com/products/docker-desktop/">https://www.docker.com/products/docker-desktop/</a></p>
+<p>インストールできたら確認:</p>
+<pre data-note-code="true"><code data-lang="bash">docker --version
+docker compose version
+</code></pre>
+<p>もし今は Docker を後回しにしたいなら、それでも構いません。<br>
+その場合は、まず <code>examples/handson</code> を進めて、<code>examples/master</code> に入る前に Docker を整える流れでも十分です。</p>
+<h2 data-note-heading="section">6. 最初の動作確認をする</h2>
+<p>ここまでできたら、いよいよ最初のハンズオンを1本動かします。</p>
+<p>リポジトリのルートで、次を実行します。</p>
+<pre data-note-code="true"><code data-lang="bash">go run ./examples/handson/01_values_and_types
+</code></pre>
+<p>うまくいけば、値と型の一覧がずらっと表示されます。</p>
+<p>たとえば、</p>
+<ul>
+<li><code>Go Hands-on (string)</code></li>
+<li><code>20 (int)</code></li>
+<li><code>3.14 (float64)</code></li>
+<li><code>true (bool)</code></li>
+</ul>
+<p>のような表示が見えるはずです。</p>
+<p>ここで大事なのは、<strong>結果を全部理解することではなく、まず手元でGoコードが動いたことを確認すること</strong>です。</p>
+<p>この最初の一歩が通ると、以後の handson はかなり進めやすくなります。</p>
+<h2 data-note-heading="section">7. もしここで詰まったら、見るべき場所</h2>
+<p>最初の段階で止まりやすいのは、だいたい次のどれかです。</p>
+<h3><code>go version</code> が通らない</h3>
+<p>Go のインストールか PATH 設定を見直します。</p>
+<h3><code>git clone</code> ができない</h3>
+<p>Git のインストール状況、またはリポジトリURLを確認します。</p>
+<h3><code>go run</code> でエラーになる</h3>
+<p>今いるディレクトリがリポジトリルートか確認します。<br>
+<code>pwd</code> で場所を見て、<code>ls</code> で <code>examples</code> ディレクトリがあるか確かめると切り分けやすいです。</p>
+<h3>エディタでは見えるのに、ターミナルで動かない</h3>
+<p>ターミナルが別の場所を向いていることが多いです。<br>
+<code>cd</code> でリポジトリルートへ移動してから、もう一度試します。</p>
+<h2 data-note-heading="section">実行結果の見どころ</h2>
+<ul>
+<li><code>go version</code> が通ること自体が最初のチェックポイント</li>
+<li><code>go run ./examples/handson/01_values_and_types</code> が通れば、以後の handson に入る準備ができていること</li>
+<li>Docker はこの時点では未使用でも、後で必要になる位置づけだと分かること</li>
+</ul>
+<h2 data-note-heading="section">試してほしい確認</h2>
+<ul>
+<li><code>go version</code> を実行して、Go のインストール確認をする</li>
+<li><code>git --version</code> を実行して、Git が使えるか確認する</li>
+<li><code>go run ./examples/handson/01_values_and_types</code> を実行して、最初のハンズオンを動かす</li>
+<li>余裕があれば <code>docker --version</code> と <code>docker compose version</code> も確認する</li>
+</ul>
+<h2 data-note-heading="section">まとめ</h2>
+<p>Go のハンズオンを始める前に必要なのは、ものすごく大がかりなセットアップではありません。</p>
+<p>まずは、</p>
+<ul>
+<li>Go が入っている</li>
+<li>エディタがある</li>
+<li>ターミナルが使える</li>
+<li>リポジトリが手元にある</li>
+<li>最初の <code>go run</code> が通る</li>
+</ul>
+<p>ここまでできれば十分です。</p>
+<p>Docker はこのあと必要になりますが、最初の一歩としては、まず Go コードを1本動かしてみるところまで行ければOKです。</p>
+<p>次からは、実際に <code>examples/handson</code> を1本ずつ追いながら、Go の基礎を積み上げていきます。</p>
+
+</article>
+  </body>
+</html>

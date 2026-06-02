@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>03 Operations: Goで値にどんな操作ができるかを一気に見る</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>03 Operations: Goで値にどんな操作ができるかを一気に見る</h1>
+<p>値を置くだけだと、まだコードは静かです。そこに演算が入ると、ようやく「処理している感じ」が出てきます。</p>
+<p>このハンズオンは、値を置くだけではなく、そこにどう演算をかけるかを見る回です。Go の演算はかなり素直なので、ここで「数値なら数値のルール、文字列なら文字列のルールがある」とつかめれば十分です。</p>
+<p>最初は整数同士の加算、減算、乗算、除算、剰余が並びます。ここで見てほしいのは、整数同士の <code>/</code> は小数ではなく整数として処理されることです。あとで型変換が必要になる理由の入口でもあります。</p>
+<p>次に実数同士の計算があります。こちらは小数を含んだ結果になり、<code>%.2f</code> のような出力フォーマットも合わせて見られます。</p>
+<p>最後は文字列連結です。Go では文字列同士は <code>+</code> でつなげられますが、数値と文字列をそのまま足すことはできません。ここが、型がはっきり分かれている言語らしいところです。</p>
+<p>この回では、演算結果そのものよりも、「値の種類によってできる操作が変わる」という感覚を持つのが大事です。</p>
+<h2 data-note-heading="section">実行コード</h2>
+<pre data-note-code="true"><code data-lang="go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	fmt.Println(&quot;== 数値の演算 ==&quot;)
+
+	a := 20
+	b := 6
+
+	fmt.Printf(&quot;%d + %d = %d\n&quot;, a, b, a+b)
+	fmt.Printf(&quot;%d - %d = %d\n&quot;, a, b, a-b)
+	fmt.Printf(&quot;%d * %d = %d\n&quot;, a, b, a*b)
+	fmt.Printf(&quot;%d / %d = %d\n&quot;, a, b, a/b)
+	fmt.Printf(&quot;%d %% %d = %d\n&quot;, a, b, a%b)
+
+	fmt.Println()
+
+	x := 7.5
+	y := 2.0
+
+	fmt.Printf(&quot;%.1f + %.1f = %.1f\n&quot;, x, y, x+y)
+	fmt.Printf(&quot;%.1f - %.1f = %.1f\n&quot;, x, y, x-y)
+	fmt.Printf(&quot;%.1f * %.1f = %.1f\n&quot;, x, y, x*y)
+	fmt.Printf(&quot;%.1f / %.1f = %.2f\n&quot;, x, y, x/y)
+
+	fmt.Println()
+	fmt.Println(&quot;== 文字列の演算 ==&quot;)
+
+	first := &quot;Go&quot;
+	second := &quot;Hands-on&quot;
+	space := &quot; &quot;
+
+	full := first + space + second
+
+	fmt.Printf(&quot;%q + %q + %q = %q\n&quot;, first, space, second, full)
+	fmt.Printf(&quot;%q の文字数 = %d\n&quot;, full, len(full))
+}
+</code></pre>
+<h2 data-note-heading="section">実行方法</h2>
+<pre data-note-code="true"><code data-lang="bash">go run ./examples/handson/03_operations
+</code></pre>
+<h2 data-note-heading="section">実行結果の見どころ</h2>
+<ul>
+<li><code>20 / 6 = 3</code> となって、小数が切り捨てられるところ</li>
+<li>実数側では <code>7.5 / 2.0 = 3.75</code> のように小数を保ったまま計算できるところ</li>
+<li>文字列は <code>+</code> で連結できるが、数値とは別のルールで動いていると分かるところ</li>
+</ul>
+<h2 data-note-heading="section">試してほしい変更</h2>
+<ul>
+<li><code>a / b</code> を <code>float64(a) / float64(b)</code> に変えて結果を比べる</li>
+<li><code>first</code> と <code>second</code> の間の <code>space</code> を消して表示の違いを見る</li>
+<li><code>%d</code> や <code>%.2f</code> の書式を変えて、出力の見え方を試す</li>
+</ul>
+
+</article>
+  </body>
+</html>

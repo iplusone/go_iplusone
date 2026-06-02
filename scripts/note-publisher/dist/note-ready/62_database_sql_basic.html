@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>62 Database SQL Basic: GoからDBへ触る最初の一歩</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>62 Database SQL Basic: GoからDBへ触る最初の一歩</h1>
+<p>このハンズオンでは <code>database/sql</code> を使って SQLite にアクセスします。テーブル作成、挿入、一覧取得、1件取得までがひと通り入っていて、とても良い入門例です。</p>
+<p>最初に <code>sql.Open</code> で接続し、<code>defer db.Close()</code> で閉じる流れがあります。ここで DB も外部資源だと見えてきます。</p>
+<p>そのあと <code>Exec</code> でテーブル作成と INSERT、<code>Query</code> で複数件取得、<code>QueryRow</code> で1件取得へ進みます。DB アクセスの基本的な型がかなり素直に並んでいます。</p>
+<p>プレースホルダ <code>?</code> を使っているのも大事です。文字列連結で SQL を作らない、という安全な入口になっています。</p>
+<p>この回は、後のトランザクションや実 DB への接続へ進むためのかなり重要な土台です。</p>
+
+</article>
+  </body>
+</html>

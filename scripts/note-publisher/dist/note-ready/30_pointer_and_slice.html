@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>30 Pointer And Slice: スライスの要素更新とスライス本体更新は別の話</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>30 Pointer And Slice: スライスの要素更新とスライス本体更新は別の話</h1>
+<p>このハンズオンは、ポインタとスライスが一緒に出てくるぶん、少し難しめです。でもここを越えると、Go のデータ構造の見え方がかなりはっきりします。</p>
+<p>大事なのは、「スライスの中身を変えること」と「スライス本体を差し替えること」は別だという点です。要素更新だけなら値渡しでも影響が見えることがありますが、<code>append</code> の結果を外へ反映したいなら話が変わります。</p>
+<p>だからこそ、ポインタ渡ししたスライスへの <code>append</code> が意味を持ちます。関数の中でスライス本体を更新し、その結果を呼び出し元へ反映できるようになるからです。</p>
+<p>この回は、スライスが単純な配列ではなく、「本体」と「参照先」を持った少し複雑な値だと理解するのに役立ちます。</p>
+
+</article>
+  </body>
+</html>

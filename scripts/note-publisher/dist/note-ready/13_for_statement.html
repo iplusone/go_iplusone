@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>13 For Statement: Goのループは `for` ひとつで表現する</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>13 For Statement: Goのループは `for` ひとつで表現する</h1>
+<p>Go には <code>while</code> がなく、繰り返しは基本的に <code>for</code> で表現します。このハンズオンは、その見え方に慣れるための回です。</p>
+<p>最初の <code>for i := 0; i &lt; 5; i++</code> は、いわゆる定番の3要素付きループです。初期化、条件、後処理の3つが並びます。</p>
+<p>次の「条件だけの for」は、実質的には while に近い書き方です。Go では while がなくても、<code>for count &lt; 3</code> のように素直に書けます。</p>
+<p>後半の <code>range</code> は、配列やスライスを回すときの Go らしい書き方です。添字と値を同時に受け取れるので、コレクション処理の基本になります。</p>
+<p>最後に <code>_</code> を使って不要な値を捨てる形も出てきます。Go は「使わない値を明示する」文化が強いので、この書き方もかなり重要です。</p>
+<p>この回では、「Go のループは全部 for に集約される」とつかめれば十分です。</p>
+
+</article>
+  </body>
+</html>

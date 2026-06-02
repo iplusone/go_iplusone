@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>39 Interfaces With Structs: 異なる構造体を同じ入口で扱う</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>39 Interfaces With Structs: 異なる構造体を同じ入口で扱う</h1>
+<p>このハンズオンでは、構造体にメソッドを生やして interface として扱う流れを見ます。前回より少し実践寄りです。</p>
+<p>ポイントは、異なる構造体でも、同じ interface を満たしていれば同じ形で扱えることです。呼び出し側から見えるのは「その型が何者か」ではなく、「何ができるか」になります。</p>
+<p>また、interface 型では定義された機能だけが見えるという点も重要です。具体型がもっと多くの機能を持っていても、interface 経由では約束した部分だけを扱います。</p>
+<p>この回は、設計を柔らかくする第一歩としてかなり大事です。型の違いを超えて処理の流れをそろえられる感覚がつかめます。</p>
+
+</article>
+  </body>
+</html>

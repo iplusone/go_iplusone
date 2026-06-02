@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>04 Variables: 変数は「値に名前を付けて再利用する仕組み」</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>04 Variables: 変数は「値に名前を付けて再利用する仕組み」</h1>
+<p>変数の話は初歩に見えますが、実はここでコードの読みやすさがかなり決まります。何に名前をつけ、どこで使い、どこで更新するかが、そのまま見通しのよさにつながるからです。</p>
+<p>このハンズオンでは、Go における変数の基本をかなり丁寧に確認しています。単に <code>var</code> を覚える回ではなく、「どこで宣言され、どこで使えて、どう更新されるか」を見る回です。</p>
+<p>前半の <code>name</code> <code>age</code> <code>score</code> では、明示的な型付き宣言と短縮宣言の両方が出てきます。ここで見たいのは、値そのものよりも「宣言の形が複数ある」ことです。</p>
+<p>次の代入パートでは、同じ変数に別の値を入れ直せることを確認します。定数との違いがまだ曖昧な段階なら、ここで「変数は変わる値を持つ箱」と考えると分かりやすいです。</p>
+<p>後半はスコープです。パッケージレベル、関数内、ブロック内で変数がどう見えるかを分けています。Go では「どこで宣言したか」で使える範囲が決まるので、この感覚はかなり重要です。</p>
+<p>最後の変数名の付け方は地味ですが実務ではとても効きます。<code>userName</code> <code>totalCount</code> <code>isActive</code> のように、値の意味が名前から読めるかどうかは、そのまま読みやすさに直結します。</p>
+<h2 data-note-heading="section">実行コード</h2>
+<pre data-note-code="true"><code data-lang="go">package main
+
+import &quot;fmt&quot;
+
+var packageLevelMessage = &quot;パッケージレベル変数&quot;
+
+func main() {
+	fmt.Println(&quot;== 変数宣言 ==&quot;)
+
+	var name string
+	name = &quot;Go&quot;
+
+	var age int = 20
+	score := 95
+
+	fmt.Printf(&quot;name = %q (%T)\n&quot;, name, name)
+	fmt.Printf(&quot;age = %d (%T)\n&quot;, age, age)
+	fmt.Printf(&quot;score = %d (%T)\n&quot;, score, score)
+
+	fmt.Println()
+	fmt.Println(&quot;== 値の代入 ==&quot;)
+
+	message := &quot;はじめまして&quot;
+	fmt.Printf(&quot;代入前 message = %q\n&quot;, message)
+
+	message = &quot;Go を学習中です&quot;
+	fmt.Printf(&quot;代入後 message = %q\n&quot;, message)
+
+	age = age + 1
+	fmt.Printf(&quot;age を更新 = %d\n&quot;, age)
+
+	fmt.Println()
+	fmt.Println(&quot;== 変数の利用範囲 ==&quot;)
+	fmt.Printf(&quot;packageLevelMessage = %q\n&quot;, packageLevelMessage)
+
+	showScope()
+
+	{
+		blockMessage := &quot;この変数はこのブロック内だけで使える&quot;
+		fmt.Printf(&quot;blockMessage = %q\n&quot;, blockMessage)
+	}
+
+	fmt.Println()
+	fmt.Println(&quot;== 変数名の付け方 ==&quot;)
+
+	userName := &quot;Ishii&quot;
+	totalCount := 3
+	isActive := true
+
+	fmt.Printf(&quot;userName = %q\n&quot;, userName)
+	fmt.Printf(&quot;totalCount = %d\n&quot;, totalCount)
+	fmt.Printf(&quot;isActive = %v\n&quot;, isActive)
+
+	fmt.Println(&quot;分かりやすい名前にすると、値の意味が読み取りやすくなる&quot;)
+}
+
+func showScope() {
+	functionMessage := &quot;この変数は showScope 関数の中だけで使える&quot;
+	fmt.Printf(&quot;functionMessage = %q\n&quot;, functionMessage)
+}
+</code></pre>
+<h2 data-note-heading="section">実行方法</h2>
+<pre data-note-code="true"><code data-lang="bash">go run ./examples/handson/04_variables
+</code></pre>
+<h2 data-note-heading="section">実行結果の見どころ</h2>
+<ul>
+<li><code>name</code> <code>age</code> <code>score</code> で、宣言の仕方が違っても値として使えるところ</li>
+<li><code>message</code> の表示が代入前後で変わり、「変数は変えられる箱」だと分かるところ</li>
+<li><code>packageLevelMessage</code> <code>functionMessage</code> <code>blockMessage</code> が、それぞれ別のスコープで使われているところ</li>
+</ul>
+<h2 data-note-heading="section">試してほしい変更</h2>
+<ul>
+<li><code>showScope</code> の中で <code>packageLevelMessage</code> を表示してみる</li>
+<li>ブロック内の <code>blockMessage</code> をブロックの外で使おうとしてみる</li>
+<li><code>userName</code> をもっと曖昧な名前に変えて、読みやすさがどう変わるか考える</li>
+</ul>
+
+</article>
+  </body>
+</html>

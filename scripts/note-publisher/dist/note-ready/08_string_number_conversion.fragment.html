@@ -1,0 +1,82 @@
+<article data-note-ready="true">
+<h1>08 String Number Conversion: 文字列と数値は、そのままでは行き来しない</h1>
+<p>文字列と数値の変換は、実務でも本当によく出ます。フォーム入力、設定値、API のパラメータ、CSV など、文字列として受け取ったものを数値にしたい場面はかなり多いです。</p>
+<p>このハンズオンでは、<code>strconv</code> を使って文字列と数値を相互変換します。実務でもかなりよく使う基本操作です。</p>
+<p>最初は <code>strconv.Atoi</code> で文字列を整数にしています。ここで大事なのは、変換には失敗しうるので <code>err</code> を返すことです。Go らしいエラーハンドリングの入口でもあります。</p>
+<p>次の <code>ParseFloat</code> は、文字列から実数への変換です。整数だけでなく、小数も文字列として受け取る場面はよくあるので、この形はかなり実用的です。</p>
+<p>後半では <code>Itoa</code> と <code>FormatFloat</code> を使って数値から文字列へ戻しています。ここで分かるのは、「表示のために文字列へ変える」処理も明示的に書く必要があることです。</p>
+<p>この回は、Go が型を曖昧に混ぜない言語だとよく分かる回です。数値と文字列は便利に自動変換されないからこそ、どの段階で何を扱っているかがはっきりします。</p>
+<h2 data-note-heading="section">実行コード</h2>
+<pre data-note-code="true"><code data-lang="go">package main
+
+import (
+	&quot;fmt&quot;
+	&quot;strconv&quot;
+)
+
+func main() {
+	fmt.Println(&quot;== 文字列から整数へ ==&quot;)
+
+	textNumber := &quot;123&quot;
+	intValue, err := strconv.Atoi(textNumber)
+	if err != nil {
+		fmt.Println(&quot;Atoi error:&quot;, err)
+		return
+	}
+
+	fmt.Printf(&quot;textNumber = %q (%T)\n&quot;, textNumber, textNumber)
+	fmt.Printf(&quot;strconv.Atoi(textNumber) = %v (%T)\n&quot;, intValue, intValue)
+
+	fmt.Println()
+	fmt.Println(&quot;== 文字列から実数へ ==&quot;)
+
+	textFloat := &quot;3.14&quot;
+	floatValue, err := strconv.ParseFloat(textFloat, 64)
+	if err != nil {
+		fmt.Println(&quot;ParseFloat error:&quot;, err)
+		return
+	}
+
+	fmt.Printf(&quot;textFloat = %q (%T)\n&quot;, textFloat, textFloat)
+	fmt.Printf(&quot;strconv.ParseFloat(textFloat, 64) = %v (%T)\n&quot;, floatValue, floatValue)
+
+	fmt.Println()
+	fmt.Println(&quot;== 整数から文字列へ ==&quot;)
+
+	score := 95
+	scoreText := strconv.Itoa(score)
+
+	fmt.Printf(&quot;score = %v (%T)\n&quot;, score, score)
+	fmt.Printf(&quot;strconv.Itoa(score) = %q (%T)\n&quot;, scoreText, scoreText)
+
+	fmt.Println()
+	fmt.Println(&quot;== 実数から文字列へ ==&quot;)
+
+	price := 980.5
+	priceText := strconv.FormatFloat(price, 'f', 1, 64)
+
+	fmt.Printf(&quot;price = %v (%T)\n&quot;, price, price)
+	fmt.Printf(&quot;strconv.FormatFloat(price, 'f', 1, 64) = %q (%T)\n&quot;, priceText, priceText)
+
+	fmt.Println()
+	fmt.Println(&quot;メモ: Go では文字列と数値を直接足し算できない&quot;)
+}
+</code></pre>
+<h2 data-note-heading="section">実行方法</h2>
+<pre data-note-code="true"><code data-lang="bash">go run ./examples/handson/08_string_number_conversion
+</code></pre>
+<h2 data-note-heading="section">実行結果の見どころ</h2>
+<ul>
+<li><code>&quot;123&quot;</code> が <code>int</code> へ変わるところ</li>
+<li><code>&quot;3.14&quot;</code> が <code>float64</code> へ変わるところ</li>
+<li>数値を文字列へ戻したとき、表示用のデータとして扱えるようになるところ</li>
+<li>変換のたびに型がきちんと変わっているところ</li>
+</ul>
+<h2 data-note-heading="section">試してほしい変更</h2>
+<ul>
+<li><code>&quot;123&quot;</code> を <code>&quot;abc&quot;</code> に変えて、<code>Atoi</code> のエラーを見る</li>
+<li><code>FormatFloat</code> の桁数を変えて表示の違いを比べる</li>
+<li>文字列と数値をそのまま <code>+</code> しようとしてみて、なぜできないか確認する</li>
+</ul>
+
+</article>

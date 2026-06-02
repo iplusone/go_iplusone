@@ -21,5 +21,10 @@
 # Logs
 *.log
 
+# note publisher
+scripts/note-publisher/node_modules/
+scripts/note-publisher/storage/
+scripts/note-publisher/artifacts/
+
 # OS
 .DS_Store

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>55 Race Detector And Atomic: 競合は見えにくいから、道具で見に行く</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>55 Race Detector And Atomic: 競合は見えにくいから、道具で見に行く</h1>
+<p>このハンズオンでは、<code>sync/atomic</code> とレース検出器の話を扱います。見えにくいデータ競合を、どう意識するかの入口です。</p>
+<p>サンプルコード自体は <code>atomic.AddInt64</code> と <code>Mutex</code> の安全なカウンタを見せています。どちらも最終結果が壊れない書き方です。</p>
+<p>README で特に大事なのは、<code>count++</code> が「読む・足す・書く」に分かれるため競合しうる、という説明です。1行に見えても不可分ではない。この感覚が並行処理では本当に重要です。</p>
+<p><code>go run -race</code> という道具があることも、ぜひ覚えておきたいです。競合は目で見るだけでは分かりにくいので、検出器の存在はかなり心強いです。</p>
+
+</article>
+  </body>
+</html>

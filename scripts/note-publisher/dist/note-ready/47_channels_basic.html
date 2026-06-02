@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>47 Channels Basic: channel は値の通路であり、待ち合わせの場所でもある</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>47 Channels Basic: channel は値の通路であり、待ち合わせの場所でもある</h1>
+<p>このハンズオンでは channel の最初の形を見ます。goroutine が計算した結果を main 側へ返す、Go らしい基本形です。</p>
+<p><code>make(chan int)</code> で通路を作り、goroutine 側で <code>c &lt;- sum</code>、main 側で <code>&lt;-c</code> と書きます。見た目は値の受け渡しですが、同時に受信側は値が来るまで待ちます。</p>
+<p>この「値の受け渡し」と「同期」がひとつになっているのが channel の面白いところです。README にある通り、単なるデータ構造ではありません。</p>
+<p>この回では、channel があることで goroutine の結果を安全に受け取れる、という感覚が持てれば十分です。</p>
+
+</article>
+  </body>
+</html>

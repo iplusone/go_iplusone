@@ -1,0 +1,9 @@
+<article data-note-ready="true">
+<h1>12 Switch Default Fallthrough: `switch` がどこで止まるかを理解する</h1>
+<p>このハンズオンでは、<code>switch</code> の中でも少し混乱しやすい <code>default</code> と <code>fallthrough</code> を扱います。</p>
+<p>最初の <code>default</code> はシンプルです。どの <code>case</code> にも一致しなかったときの逃げ道として使います。ここは他言語の <code>default</code> と似ています。</p>
+<p>次に大事なのが、Go の <code>switch</code> は一致した <code>case</code> を実行したら、基本的にはそこで終わるという点です。C系言語に慣れていると、次へ落ちる印象を持ちがちですが、Go は逆です。</p>
+<p>だからこそ <code>fallthrough</code> が特別な意味を持ちます。これを書くと、次の <code>case</code> の条件を再評価せず、そのまま次の処理へ進みます。ここがこのハンズオンの一番大事なポイントです。</p>
+<p><code>fallthrough</code> は便利というより、挙動をはっきり理解してから使うべき機能です。この回では「通常は落ちない、<code>fallthrough</code> を書いたときだけ次へ進む」と覚えておくと十分です。</p>
+
+</article>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>63 Web To Markdown Basic: ここまでの知識をつないで1つの成果物にする</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>63 Web To Markdown Basic: ここまでの知識をつないで1つの成果物にする</h1>
+<p>このハンズオンは、かなり気持ちのいい総まとめです。Web ページを取得し、HTML を Markdown へ変換し、最後にファイルへ保存します。</p>
+<p>ここには <code>http.Get</code> に相当するネットワークアクセス、<code>io.ReadAll</code> による読み込み、外部ライブラリによる変換、<code>os.WriteFile</code> による保存が全部入っています。つまり、前のハンズオンで学んだことがひとつの流れとしてつながります。</p>
+<p>さらに <code>httptest.NewServer</code> を使ってローカルで完結させているので、外部依存なしで考え方だけを追えるのも良いところです。</p>
+<p>この回で見たいのは、HTML を Markdown に変換するライブラリそのものより、「データを取得して加工して保存する」という実装の流れです。ここまで来ると、Go で小さなツールを作る感覚がかなり出てきます。</p>
+
+</article>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+<article data-note-ready="true">
+<h1>56 I/O Reader Writer Basic: I/O をインタフェースで統一して考える</h1>
+<p>このハンズオンでは <code>io.Reader</code> と <code>io.Writer</code> を扱います。Go の I/O がきれいだと感じる人が多いのは、この統一された見え方のおかげです。</p>
+<p><code>strings.NewReader</code> を <code>Reader</code> として使い、<code>bytes.Buffer</code> を <code>Writer</code> として使っています。さらに <code>io.Copy</code> でその2つをつないでいます。ここで見てほしいのは、対象がファイルでなくても、同じインタフェースで流れを作れることです。</p>
+<p>後半では <code>bytes.Buffer</code> が <code>Reader</code> にもなるので、書いたものをまた読み直せます。この柔らかさが I/O 設計の強さです。</p>
+<p>この回は、ファイルや HTTP ボディなどがなぜ似たように扱えるのか、その入口をとてもきれいに見せています。</p>
+
+</article>

@@ -1,0 +1,8 @@
+<article data-note-ready="true">
+<h1>54 Worker Pool Basic: goroutine を無限に増やさず、数を決めて回す</h1>
+<p>このハンズオンでは Worker Pool を扱います。Go は goroutine が軽いですが、だからといって無制限に増やしてよいわけではありません。</p>
+<p>ここでは <code>jobs</code> channel に仕事を流し、固定数の worker goroutine がそれを取り出して処理します。<code>close(jobs)</code> で <code>range</code> が終わるのも重要なポイントです。</p>
+<p>Worker Pool の意味は、「仕事の数」と「同時に動く数」を分けることです。ジョブが10件あっても、worker が3本なら並列度は3です。</p>
+<p>この回は、並行処理を「増やす」から「制御する」へ進む入口としてとても大事です。</p>
+
+</article>

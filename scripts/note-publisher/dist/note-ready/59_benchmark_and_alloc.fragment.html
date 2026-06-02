@@ -1,0 +1,8 @@
+<article data-note-ready="true">
+<h1>59 Benchmark And Alloc: 速い遅いを感覚ではなく数字で見る</h1>
+<p>このハンズオンではベンチマークとアロケーション計測を扱います。実装の良し悪しを、雰囲気ではなく数字で判断する入口です。</p>
+<p><code>BenchmarkXxx</code> 関数で <code>b.N</code> 回ループし、<code>go test -bench=. -benchmem</code> で計測します。ここで出る <code>ns/op</code> <code>B/op</code> <code>allocs/op</code> は、それぞれ時間、メモリ量、確保回数の目安です。</p>
+<p>Go ではヒープ確保が多いと GC 負荷が上がりやすいので、単に速さだけでなく <code>allocs/op</code> も重要です。</p>
+<p>この回は、最適化を始める前に「まず測る」という文化に入る回です。性能の話をちゃんと現実に戻してくれます。</p>
+
+</article>

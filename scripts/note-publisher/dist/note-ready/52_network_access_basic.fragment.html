@@ -1,0 +1,8 @@
+<article data-note-ready="true">
+<h1>52 Network Access Basic: HTTPで外のデータを取る流れを小さく試す</h1>
+<p>このハンズオンでは、<code>http.Get</code> を使ったネットワークアクセスの基本を学びます。外部サイトではなく <code>httptest</code> のローカルサーバーを使っているので、考え方に集中しやすい形です。</p>
+<p>流れはとても実務的で、URL にアクセスし、<code>Response</code> を受け取り、<code>Body</code> を読み、最後に <code>Close</code> します。特に <code>Body</code> が <code>io.ReadCloser</code> で、<code>defer resp.Body.Close()</code> が必要な点は重要です。</p>
+<p>取得した本文が <code>[]byte</code> で返ってくることも、この回で自然に確認できます。ネットワーク越しのテキストも、最終的にはバイト列として扱っているわけです。</p>
+<p>この回は、HTTP アクセスの最小単位をかなりきれいに見せています。後の API や JSON の理解にも直結します。</p>
+
+</article>

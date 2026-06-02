@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>02 Literals: コードに直接書く値にも種類がある</title>
+    <style>
+      body {
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 20px 60px;
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+        line-height: 1.9;
+        color: #222;
+      }
+      h1, h2, h3 {
+        line-height: 1.5;
+      }
+      pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fafafa;
+      }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      blockquote {
+        margin-left: 0;
+        padding-left: 16px;
+        border-left: 4px solid #ddd;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+<article data-note-ready="true">
+<h1>02 Literals: コードに直接書く値にも種類がある</h1>
+<p>変数の前に、まず値そのものの書き方があります。ここを意識して見ることは意外と少ないのですが、Go のコードを読むときにはかなり大事です。</p>
+<p>このハンズオンでは、変数に入れる前の「値の書き方」そのものを見ます。Go では、コードに直接書く <code>10</code> や <code>&quot;hello&quot;</code> も、それぞれ意味のあるリテラルです。</p>
+<p>前半では整数リテラルとして、10進数、8進数、16進数を並べています。同じ数を表していても、書き方が違うと「どういう前提の値か」が分かります。ここは実務で頻出というより、「Go では整数も複数の表現を持てる」と知るための部分です。</p>
+<p>次の実数リテラルでは <code>3.14</code> と指数表記を出しています。数値の書き方が変わっても、最終的には値として扱えることを確認できます。</p>
+<p>文字列では、解釈付き文字列と生文字列の違いが重要です。<code>\n</code> が改行として解釈されるか、そのまま文字として入るか。この差は後で SQL、JSON、複数行テキストを書くときにも効いてきます。</p>
+<p>最後の真偽値リテラルは短いですが、<code>true</code> と <code>false</code> がただの文字列ではなく <code>bool</code> だと確認する意味があります。</p>
+<p>この回は、Go の値が「どう存在するか」ではなく「どう書かれるか」を見る回です。地味ですが、文法の土台になります。</p>
+<h2 data-note-heading="section">実行コード</h2>
+<pre data-note-code="true"><code data-lang="go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+	fmt.Println(&quot;== 整数リテラル ==&quot;)
+
+	decimal := 10
+	octal := 0o12
+	hexadecimal := 0xA
+
+	fmt.Printf(&quot;10進数 10 = %v (%T)\n&quot;, decimal, decimal)
+	fmt.Printf(&quot;8進数 0o12 = %v (%T)\n&quot;, octal, octal)
+	fmt.Printf(&quot;16進数 0xA = %v (%T)\n&quot;, hexadecimal, hexadecimal)
+
+	fmt.Println()
+	fmt.Println(&quot;== 実数リテラル ==&quot;)
+
+	floatNumber := 3.14
+	exponentNumber := 1.2e3
+
+	fmt.Printf(&quot;実数 3.14 = %v (%T)\n&quot;, floatNumber, floatNumber)
+	fmt.Printf(&quot;指数表記 1.2e3 = %v (%T)\n&quot;, exponentNumber, exponentNumber)
+
+	fmt.Println()
+	fmt.Println(&quot;== テキストリテラル ==&quot;)
+
+	interpreted := &quot;Go\nHands-on&quot;
+	raw := `Go
+Hands-on`
+
+	fmt.Printf(&quot;解釈付き文字列 = %q\n&quot;, interpreted)
+	fmt.Printf(&quot;生文字列 = %q\n&quot;, raw)
+
+	fmt.Println()
+	fmt.Println(&quot;== 真偽値リテラル ==&quot;)
+
+	isGoSimple := true
+	isJavaScriptTypeSafe := false
+
+	fmt.Printf(&quot;true = %v (%T)\n&quot;, isGoSimple, isGoSimple)
+	fmt.Printf(&quot;false = %v (%T)\n&quot;, isJavaScriptTypeSafe, isJavaScriptTypeSafe)
+}
+</code></pre>
+<h2 data-note-heading="section">実行方法</h2>
+<pre data-note-code="true"><code data-lang="bash">go run ./examples/handson/02_literals
+</code></pre>
+<h2 data-note-heading="section">実行結果の見どころ</h2>
+<ul>
+<li><code>10進数 10</code> <code>8進数 0o12</code> <code>16進数 0xA</code> が、最終的には同じ値として見えるところ</li>
+<li><code>Go\nHands-on</code> と生文字列の表示差で、改行の扱いが目で分かるところ</li>
+<li><code>true</code> と <code>false</code> にもちゃんと <code>bool</code> という型が付いているところ</li>
+</ul>
+<h2 data-note-heading="section">試してほしい変更</h2>
+<ul>
+<li><code>0xA</code> を <code>0xFF</code> に変えて、表示結果を確認する</li>
+<li>解釈付き文字列の <code>\n</code> を <code>\t</code> に変えてみる</li>
+<li>生文字列の中に <code>&quot;</code> を入れてもそのまま書けるか試す</li>
+</ul>
+
+</article>
+  </body>
+</html>

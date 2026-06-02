@@ -1,0 +1,8 @@
+<article data-note-ready="true">
+<h1>60 HTTP Server Basic: Go標準ライブラリだけでWebサーバを書く</h1>
+<p>このハンズオンでは <code>net/http</code> で最小の HTTP サーバを書きます。Go が標準ライブラリだけでかなり多くをこなせることがよく分かる回です。</p>
+<p><code>http.HandleFunc</code> で <code>/hello</code> と <code>/echo</code> を登録し、<code>http.ListenAndServe</code> で起動します。ここで大事なのは、ハンドラが <code>ResponseWriter</code> と <code>Request</code> を受け取ることです。レスポンスを書く側と、リクエストを読む側がかなり明確に分かれています。</p>
+<p><code>helloHandler</code> ではメソッドをチェックし、<code>echoHandler</code> ではクエリパラメータを読んでいます。最小コードの中に HTTP の基本がかなり詰まっています。</p>
+<p>この回は、後の JSON API や Web アプリの基礎としてとても重要です。</p>
+
+</article>

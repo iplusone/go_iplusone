@@ -1,0 +1,8 @@
+<article data-note-ready="true">
+<h1>53 WaitGroup Basic: goroutine の「終わり」をちゃんと待つ</h1>
+<p>このハンズオンでは <code>sync.WaitGroup</code> をとても小さな形で確認します。goroutine を起動するだけでは十分ではなく、完了を待つ仕組みが必要だとよく分かる回です。</p>
+<p><code>wg.Add(1)</code> で待つ件数を増やし、goroutine 側で <code>defer wg.Done()</code>、最後に <code>wg.Wait()</code>。この3点セットが基本形です。</p>
+<p>Go では、main 関数が終わればプログラム全体が終わります。だから、起動した goroutine が終わる保証はありません。WaitGroup はそこを人間が明示するための道具です。</p>
+<p>この回は短いですが、並行処理を安定して書くための必須パターンをかなり分かりやすく示しています。</p>
+
+</article>
