@@ -22,31 +22,31 @@
 ## 入口
 
 - URL: `/`
-- 起動エントリ: [main.go](/home/ishii/projects/go_iplusone/main.go:1)
-- ルーティング / ハンドラ: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:1)
-- テンプレート: [internal/site/templates/home.html](/home/ishii/projects/go_iplusone/internal/site/templates/home.html:1)
+- 起動エントリ: [main.go](../main.go)
+- ルーティング / ハンドラ: [internal/site/app.go](../internal/site/app.go)
+- テンプレート: [internal/site/templates/home.html](../internal/site/templates/home.html)
 
 ## TOPページの描画部品
 
-- 共通 head / header / footer: [internal/site/templates/layout.html](/home/ishii/projects/go_iplusone/internal/site/templates/layout.html:1)
-- TOP本体: [internal/site/templates/home.html](/home/ishii/projects/go_iplusone/internal/site/templates/home.html:1)
-- スタイル: [internal/site/static/styles.css](/home/ishii/projects/go_iplusone/internal/site/static/styles.css:1)
-- 初期データ: [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:1)
+- 共通 head / header / footer: [internal/site/templates/layout.html](../internal/site/templates/layout.html)
+- TOP本体: [internal/site/templates/home.html](../internal/site/templates/home.html)
+- スタイル: [internal/site/static/styles.css](../internal/site/static/styles.css)
+- 初期データ: [internal/site/data.go](../internal/site/data.go)
 
 ## 設計上の共通部分
 
 ### ルーティングと画面生成
 
-- 入口は [main.go](/home/ishii/projects/go_iplusone/main.go:1) から [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:1) の `site.New()` に集約
+- 入口は [main.go](../main.go) から [internal/site/app.go](../internal/site/app.go) の `site.New()` に集約
 - URL 配線は `App.Handler()` に集約し、`http.ServeMux` で公開ルートを一元管理
 - 固定ページは `page(key)` ハンドラで共通化し、`content` マップ上の定義差し替えで増やせる構成
 - 一覧 / 詳細ページも `render()` を共通で通し、`ViewData` を介してテンプレートへ値を渡す
 
 ### テンプレート共通部品
 
-- head / header / footer は [internal/site/templates/layout.html](/home/ishii/projects/go_iplusone/internal/site/templates/layout.html:1) に分離
+- head / header / footer は [internal/site/templates/layout.html](../internal/site/templates/layout.html) に分離
 - 各ページテンプレートは共通部品を `template` 呼び出しで取り込み、本文だけを持つ構成
-- 見た目の共通ルールは [internal/site/static/styles.css](/home/ishii/projects/go_iplusone/internal/site/static/styles.css:1) に集約
+- 見た目の共通ルールは [internal/site/static/styles.css](../internal/site/static/styles.css) に集約
 
 ### ナビゲーション
 
@@ -54,12 +54,12 @@
 - フッターナビは `footerNav()`
 - 外部導線は `seedExternalLinks()`
 
-いずれも [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:1) または [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:1) 側で定義し、個別テンプレートにベタ書きしない方針
+いずれも [internal/site/app.go](../internal/site/app.go) または [internal/site/data.go](../internal/site/data.go) 側で定義し、個別テンプレートにベタ書きしない方針
 
 ### データ構造
 
 - TOP、固定ページ、NEWS、SUNO はそれぞれ `HomePageData`、`SimplePage`、`NewsItem`、`Song` の型で整理
-- 画面表示用の初期データは [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:1) に集約
+- 画面表示用の初期データは [internal/site/data.go](../internal/site/data.go) に集約
 - 現段階はインメモリだが、将来的に DB 化する際もハンドラ側の責務を大きく変えずに差し替える想定
 
 ### 静的ファイル配信
@@ -73,9 +73,9 @@
 ### 同一ページ内アンカー
 
 - `/#about`
-  - 定義: [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:111)
+  - 定義: `internal/site/data.go` の `seedServices`
 - `/#service`
-  - 定義: [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:116)
+  - 定義: `internal/site/data.go` の `seedServices`
 
 ### 主な表示ブロック
 
@@ -89,73 +89,73 @@
 
 主な描画定義:
 
-- [internal/site/templates/home.html](/home/ishii/projects/go_iplusone/internal/site/templates/home.html:1)
+- [internal/site/templates/home.html](../internal/site/templates/home.html)
 
 ## TOPから直接遷移できる内部ページ
 
 ### 固定ページ / 一覧
 
 - `/news`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:196)
-  - テンプレート: [internal/site/templates/news_list.html](/home/ishii/projects/go_iplusone/internal/site/templates/news_list.html:1)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
+  - テンプレート: [internal/site/templates/news_list.html](../internal/site/templates/news_list.html)
 
 - `/gospec/{chapter-slug}`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:1)
-  - テンプレート: [internal/site/templates/study_chapter.html](/home/ishii/projects/go_iplusone/internal/site/templates/study_chapter.html:1)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
+  - テンプレート: [internal/site/templates/study_chapter.html](../internal/site/templates/study_chapter.html)
 
 - `/blog`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:129)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/contact`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:130)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/hp_templates`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:131)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/project-works`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:132)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/corporates`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:133)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/map`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:134)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/homepages`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:135)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/railway_routes/front`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:136)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/suno-songs`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:228)
-  - テンプレート: [internal/site/templates/song_list.html](/home/ishii/projects/go_iplusone/internal/site/templates/song_list.html:1)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
+  - テンプレート: [internal/site/templates/song_list.html](../internal/site/templates/song_list.html)
 
 - `/suno-library`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:128)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/platforms/bidding`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:137)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 - `/platforms/reservation`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:138)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 ### 稼働確認
 
 - `/healthz`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:172)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
 
 ## TOPから直接遷移できる詳細ページ種別
 
 ### 動的詳細
 
 - `/news/detail/{id}`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:216)
-  - データ: [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:142)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
+  - データ: [internal/site/data.go](../internal/site/data.go)
 
 - `/suno-songs/{id}`
-  - 実装: [internal/site/app.go](/home/ishii/projects/go_iplusone/internal/site/app.go:248)
-  - データ: [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:174)
+  - 実装: [internal/site/app.go](../internal/site/app.go)
+  - データ: [internal/site/data.go](../internal/site/data.go)
 
 ## TOPから直接出ていく外部URL
 
@@ -169,12 +169,12 @@
 
 定義元:
 
-- [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:131)
+- [internal/site/data.go](../internal/site/data.go)
 
 ## データ方針
 
 - 現段階の NEWS / SUNO / TOP カードはインメモリ初期データで保持
-- データ定義は [internal/site/data.go](/home/ishii/projects/go_iplusone/internal/site/data.go:1) に集約
+- データ定義は [internal/site/data.go](../internal/site/data.go) に集約
 - 将来的な DB 差し替えを見据えて、ハンドラからはデータ取得関数を通して参照
 
 ## 簡易サイトマップ

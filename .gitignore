@@ -22,6 +22,12 @@
 *.log
 
 # note publisher
+docs/note-handson-code-articles/
+docs/note-go-master-curriculum/
+docs/go-master-curriculum-blog-draft.md
+docs/go-master-curriculum-note-strategy.md
+docs/go-article-titles.md
+scripts/note-publisher/
 scripts/note-publisher/node_modules/
 scripts/note-publisher/storage/
 scripts/note-publisher/artifacts/

@@ -1,8 +1,0 @@
-<article data-note-ready="true">
-<h1>51 File Access Basic: ファイルもOSリソースだと意識して読む</h1>
-<p>このハンズオンでは、ファイルアクセスの基本を一通り確認します。<code>ReadFile</code> <code>WriteFile</code> だけでなく、<code>OpenFile</code> と <code>defer Close</code> まで入っているのでかなり実践的です。</p>
-<p>前半では一時ディレクトリを作り、<code>os.WriteFile</code> で初期内容を書きます。次に <code>os.ReadFile</code> で読み直し、<code>[]byte</code> と <code>string</code> の関係も確認できます。</p>
-<p>後半の <code>appendLine</code> が大事です。追記モードでファイルを開き、<code>defer f.Close()</code> で必ず閉じています。ここで、ファイルはただの文字列置き場ではなく「開いたら閉じる必要がある資源」だと見えてきます。</p>
-<p>この回は、I/O の入口としてかなりよくできています。まずは全読み書き、その次に細かい制御へ進む流れが自然です。</p>
-
-</article>

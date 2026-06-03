@@ -4,7 +4,7 @@
 
 最初にやることは1つです。
 
-1. [docs/go-master-curriculum.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum.md) を読む
+1. [docs/go-master-curriculum.md](go-master-curriculum.md) を読む
 
 ここが正本です。
 
@@ -12,28 +12,28 @@
 
 順番は次で固定します。
 
-1. [docs/go-master-curriculum.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum.md)
+1. [docs/go-master-curriculum.md](go-master-curriculum.md)
    12週間カリキュラムの正本
-2. [docs/go-master-curriculum-handson-mapping.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum-handson-mapping.md)
+2. [docs/go-master-curriculum-handson-mapping.md](go-master-curriculum-handson-mapping.md)
    正本と現在の handson の対応関係
-3. [docs/go-master-curriculum-gap-list.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum-gap-list.md)
+3. [docs/go-master-curriculum-gap-list.md](go-master-curriculum-gap-list.md)
    何が足りていないかの一覧
-4. [examples/master/README.md](/home/ishii/projects/go_iplusone/examples/master/README.md)
+4. [examples/master/README.md](../examples/master/README.md)
    正本対応の実践編ハンズオン
-5. [examples/handson/README.md](/home/ishii/projects/go_iplusone/examples/handson/README.md)
+5. [examples/handson/README.md](../examples/handson/README.md)
    基礎文法編ハンズオン
-6. [examples/appendix/README.md](/home/ishii/projects/go_iplusone/examples/appendix/README.md)
+6. [examples/appendix/README.md](../examples/appendix/README.md)
    付録（Fyne GUI、Web サーバ）
 
 ## 役割
 
-- [docs/go-master-curriculum.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum.md)
+- [docs/go-master-curriculum.md](go-master-curriculum.md)
   何を学ぶかを決める正本
-- [examples/master/README.md](/home/ishii/projects/go_iplusone/examples/master/README.md)
+- [examples/master/README.md](../examples/master/README.md)
   正本に対応する実践編
-- [examples/handson/README.md](/home/ishii/projects/go_iplusone/examples/handson/README.md)
+- [examples/handson/README.md](../examples/handson/README.md)
   Go 基礎文法編
-- [examples/appendix/README.md](/home/ishii/projects/go_iplusone/examples/appendix/README.md)
+- [examples/appendix/README.md](../examples/appendix/README.md)
   本編の外にある付録（Fyne GUI・Web サーバ）
 
 ## 学習の前提

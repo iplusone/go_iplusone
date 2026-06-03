@@ -1,6 +1,6 @@
 # 正本カリキュラム整備の不足一覧
 
-このドキュメントは、[docs/go-master-curriculum.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum.md) を正本としたときに、現在の全体構成とハンズオンメニューで足りていない部分を整理したタスクリストです。
+このドキュメントは、[docs/go-master-curriculum.md](go-master-curriculum.md) を正本としたときに、現在の全体構成とハンズオンメニューで足りていない部分を整理したタスクリストです。
 
 目的は次の2つです。
 

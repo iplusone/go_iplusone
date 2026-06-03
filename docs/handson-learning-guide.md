@@ -12,7 +12,7 @@
 
 ## 使い方
 
-1. まず [examples/handson/README.md](/home/ishii/projects/go_iplusone/examples/handson/README.md) で全体の目次を見る
+1. まず [examples/handson/README.md](../examples/handson/README.md) で全体の目次を見る
 2. 先頭の章から順番に `go run ./examples/handson/<directory>` で実行する
 3. 出力を見ながら `main.go` を読み、値や条件を自分で変更して挙動を確かめる
 4. つまずいたら各回の `README.md` と、このガイドの「学習の流れ」を見直す
@@ -370,6 +370,6 @@ Chapter 5 に相当する学習として、ファイル、ネットワーク、I
 
 ## 関連ドキュメント
 
-- ハンズオン目次: [examples/handson/README.md](/home/ishii/projects/go_iplusone/examples/handson/README.md)
-- GoSpec 学習ガイド: [docs/gospec-learning-guide.md](/home/ishii/projects/go_iplusone/docs/gospec-learning-guide.md)
-- 高度な文法ロードマップ: [docs/go-advanced-syntax-roadmap.md](/home/ishii/projects/go_iplusone/docs/go-advanced-syntax-roadmap.md)
+- ハンズオン目次: [examples/handson/README.md](../examples/handson/README.md)
+- GoSpec 学習ガイド: [docs/gospec-learning-guide.md](gospec-learning-guide.md)
+- 高度な文法ロードマップ: [docs/go-advanced-syntax-roadmap.md](go-advanced-syntax-roadmap.md)

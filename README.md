@@ -56,7 +56,7 @@ docker compose up --build
 
 ## ハンズオン実行例
 
-最初の入口は [docs/start-here.md](/home/ishii/projects/go_iplusone/docs/start-here.md) です。以後の学習導線は、そこから辿ってください。
+最初の入口は [docs/start-here.md](docs/start-here.md) です。以後の学習導線は、そこから辿ってください。
 
 このリポジトリでは、3段階のルートを順番に進めます。
 

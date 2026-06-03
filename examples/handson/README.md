@@ -2,7 +2,7 @@
 
 Go の基礎文法と言語機能を順番に固めるためのハンズオン目次です。
 
-全体ガイドは [docs/handson-learning-guide.md](/home/ishii/projects/go_iplusone/docs/handson-learning-guide.md) にまとめています。
+全体ガイドは [docs/handson-learning-guide.md](../../docs/handson-learning-guide.md) にまとめています。
 
 このディレクトリだけで学習を完結させるのではなく、このあとに `examples/master` へ進んで Docker、Web、DB、計測、運用までつなげます。
 

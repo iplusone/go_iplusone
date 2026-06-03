@@ -1,6 +1,6 @@
 # Master Hands-on Index
 
-正本カリキュラム [docs/go-master-curriculum.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum.md) に対応する実践編ハンズオンの目次です。
+正本カリキュラム [docs/go-master-curriculum.md](../../docs/go-master-curriculum.md) に対応する実践編ハンズオンの目次です。
 
 このディレクトリは、`examples/handson` を終えたあとに別ルートで選ぶものではありません。
 

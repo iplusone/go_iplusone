@@ -6,11 +6,11 @@
 
 ## このドキュメントの位置づけ
 
-- [examples/handson/README.md](/home/ishii/projects/go_iplusone/examples/handson/README.md)
+- [examples/handson/README.md](../examples/handson/README.md)
   基礎ハンズオンの目次
-- [docs/handson-learning-guide.md](/home/ishii/projects/go_iplusone/docs/handson-learning-guide.md)
+- [docs/handson-learning-guide.md](handson-learning-guide.md)
   基礎ハンズオン全体の学習順
-- [docs/go-concurrency-learning-guide.md](/home/ishii/projects/go_iplusone/docs/go-concurrency-learning-guide.md)
+- [docs/go-concurrency-learning-guide.md](go-concurrency-learning-guide.md)
   並行処理トピックをまとめた学習ガイド
 - このドキュメント
   基礎の次に進む上級トピックの整理

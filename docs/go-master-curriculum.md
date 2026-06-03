@@ -15,19 +15,19 @@
 
 ## このドキュメントの位置づけ
 
-- [docs/start-here.md](/home/ishii/projects/go_iplusone/docs/start-here.md)
+- [docs/start-here.md](start-here.md)
   最初に読むページ
 - このドキュメント
   12週間カリキュラムの正本
-- [docs/handson-learning-guide.md](/home/ishii/projects/go_iplusone/docs/handson-learning-guide.md)
+- [docs/handson-learning-guide.md](handson-learning-guide.md)
   基礎ハンズオンの学習順
-- [docs/go-master-curriculum-handson-mapping.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum-handson-mapping.md)
+- [docs/go-master-curriculum-handson-mapping.md](go-master-curriculum-handson-mapping.md)
   正本カリキュラムと既存 handson の対応表
-- [docs/go-master-curriculum-gap-list.md](/home/ishii/projects/go_iplusone/docs/go-master-curriculum-gap-list.md)
+- [docs/go-master-curriculum-gap-list.md](go-master-curriculum-gap-list.md)
   全体構成とハンズオンメニューの不足一覧
-- [docs/go-concurrency-learning-guide.md](/home/ishii/projects/go_iplusone/docs/go-concurrency-learning-guide.md)
+- [docs/go-concurrency-learning-guide.md](go-concurrency-learning-guide.md)
   並行処理トピックの補助ガイド
-- [docs/go-advanced-syntax-roadmap.md](/home/ishii/projects/go_iplusone/docs/go-advanced-syntax-roadmap.md)
+- [docs/go-advanced-syntax-roadmap.md](go-advanced-syntax-roadmap.md)
   基礎の次に広げる上級トピック整理
 
 ## 全体方針

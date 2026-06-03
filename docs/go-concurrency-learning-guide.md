@@ -13,9 +13,9 @@
 
 ## このドキュメントの位置づけ
 
-- [docs/handson-learning-guide.md](/home/ishii/projects/go_iplusone/docs/handson-learning-guide.md)
+- [docs/handson-learning-guide.md](handson-learning-guide.md)
   Go 基礎ハンズオン全体の学習順
-- [docs/go-advanced-syntax-roadmap.md](/home/ishii/projects/go_iplusone/docs/go-advanced-syntax-roadmap.md)
+- [docs/go-advanced-syntax-roadmap.md](go-advanced-syntax-roadmap.md)
   基礎の次に進む上級トピックの整理
 - このドキュメント
   並行処理トピックだけをまとめて復習できる学習ガイド
