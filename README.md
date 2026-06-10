@@ -53,6 +53,10 @@ docker compose up --build
   Go の高度な文法をどう学ぶかのロードマップ
 - `docs/top-page-structure.md`
   Go 学習トップの構成メモ
+- `docs/go-manga-series-outline.md`
+  Go 誕生漫画の続編シリーズ構成メモ
+- `docs/go-manga-design-guide.md`
+  Go 誕生漫画シリーズの共通デザインガイド
 
 ## ハンズオン実行例
 
